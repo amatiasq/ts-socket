@@ -1,0 +1,32 @@
+{
+  "name": "ts-socket-client",
+  "version": "0.0.1",
+  "author": "A. Matías Quezada (amatiasq@gmail.com)",
+  "license": "BSD-2-Clause",
+  "private": true,
+  "scripts": {
+    "start": "npm run webpack-dev-server",
+    "build": "npm run webpack -- --env.mode production",
+    "webpack": "webpack --config config/webpack.config.js",
+    "webpack-dev-server": "webpack-dev-server --config config/webpack.config.js --env.mode development --open",
+    "pre-commit": "npm test"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "3.0.0",
+    "compression-webpack-plugin": "3.1.0",
+    "copy-webpack-plugin": "^6.1.1",
+    "file-loader": "4.3.0",
+    "html-webpack-plugin": "3.2.0",
+    "terser-webpack-plugin": "^4.2.1",
+    "ts-loader": "6.2.2",
+    "typescript": "^4.0.2",
+    "webpack": "4.44.1",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0",
+    "webpack-merge": "4.2.2"
+  },
+  "dependencies": {
+    "@amatiasq/emitter": "^4.1.1",
+    "@amatiasq/resilient-socket": "^0.1.2"
+  }
+}

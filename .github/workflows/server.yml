@@ -1,0 +1,30 @@
+name: Deploy Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: SSH to server, pull & restart
+    runs-on: ubuntu-latest
+    steps:
+      - name: Executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd mongus/server
+
+            git fetch --all
+            git reset --hard origin/main
+
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            npm i
+
+            pm2 reload ts-socket
